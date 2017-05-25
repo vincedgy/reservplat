@@ -13,6 +13,7 @@ But also a whole bunch of great tehcnologiy from SpringCloud and Netflix microse
 
 - https://www.youtube.com/watch?v=rqQOSG0DWPY
 
+- https://github.com/joshlong/bootiful-microservices-config
 
 ## Configuration and choices
 
