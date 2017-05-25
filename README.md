@@ -1,3 +1,9 @@
+# reservplat
+
+https://github.com/vincedgy/reservplat.git
+
+My exploratory microservices plateform, following great presentation from the excellent Josh Long (https://github.com/joshlong)
+
 # Microservices with SpringBoot, SpringCloud etc..
 
 The goal : 
@@ -15,8 +21,9 @@ But also a whole bunch of great tehcnologiy from SpringCloud and Netflix microse
 
 - https://github.com/joshlong/bootiful-microservices-config
 
-## Configuration and choices
+## SpringCloud Config server 
 
+SpringCloud config uses a REAL git repository (wether it is local or remote).
 
-
+For this project repo is https://github.com/vincedgy/reservplat-config.git
 
