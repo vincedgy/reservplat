@@ -36,6 +36,12 @@ more here : https://cloud.spring.io/spring-cloud-config/spring-cloud-config.html
 
 !! Look at Vault integration wich brings crypto capabilities for secret content
 
+Don't forget to refresh client microservices on config by committing configuration into git and then POST empty request to refresh :
+
+```
+curl -d {} "http://localhost:8000/resfresh"
+```
+
 ## Spring Boot CLI
 
 https://github.com/spring-cloud/spring-cloud-cli
@@ -49,6 +55,11 @@ note : checkout the last release here https://github.com/spring-cloud/spring-clo
 ```
 $ spring install org.springframework.cloud:spring-cloud-cli:1.3.3.RELEASE
 ```
+
+## Service registration and discovery with Eureka
+
+When microservices need to talk to each other we don't want to let them know where other microservices are (what host, what port, etc...), and _DNS_ is a very bad choice in this case because of latency, cache etc...
+
 
 
 
