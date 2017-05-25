@@ -8,8 +8,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.stream.annotation.EnableBinding;
+import org.springframework.cloud.stream.annotation.Input;
+import org.springframework.cloud.stream.messaging.Sink;
+import org.springframework.cloud.stream.messaging.Source;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import org.springframework.integration.annotation.MessageEndpoint;
+import org.springframework.integration.annotation.ServiceActivator;
+import org.springframework.messaging.SubscribableChannel;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,6 +29,12 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Stream;
 
+interface ReservationServiceChannels {
+    @Input
+    SubscribableChannel input();
+}
+
+@EnableBinding(ReservationServiceChannels.class)
 @SpringBootApplication
 @EnableDiscoveryClient
 public class ReservationServiceApplication {
@@ -51,6 +64,21 @@ interface ReservationRepository extends JpaRepository<Reservation, Long> {
     List<Reservation> findById(Long id);
 }
 
+
+@MessageEndpoint
+class ReservationProcessor {
+    private final ReservationRepository reservationRepository;
+
+    @ServiceActivator(inputChannel = "input")
+    public void acceptNewReservations(String rn) {
+        reservationRepository.save(new Reservation(rn));
+    }
+
+    @Autowired
+    public ReservationProcessor(ReservationRepository reservationRepository) {
+        this.reservationRepository = reservationRepository;
+    }
+}
 
 @Component
 class ReservationDataCLR implements CommandLineRunner {

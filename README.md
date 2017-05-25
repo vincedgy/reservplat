@@ -60,7 +60,12 @@ $ spring install org.springframework.cloud:spring-cloud-cli:1.3.3.RELEASE
 
 When microservices need to talk to each other we don't want to let them know where other microservices are (what host, what port, etc...), and _DNS_ is a very bad choice in this case because of latency, cache etc...
 
+Use @EnableDiscoveryClient in order to change from Eureka to another solution.
 
+## Edge services
+
+Responsible for talking to the external worl (from the microservices platform perspective).
+It's edge services that talk to final clients of the services (mobile, car, refridgerators, TV, what you want...).
 
 
 
