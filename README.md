@@ -9,13 +9,18 @@ My exploratory microservices plateform, following great presentation from the ex
 The goal : 
 Build a reservation platform using microservices : Sprinboot REST API, JPA, Web (MVC), H2 db, HATEAOS
 
-But also a whole bunch of great tehcnologiy from SpringCloud and Netflix microservices stack (quite standards now)
-- Centralized Configuration server (wich is a microservice itself)
-- Eureka integration for service discovery
+But also a whole bunch of great technologies from SpringCloud and Netflix microservices stack (quite standards now)
+- Centralized Configuration server (wich is a microservice itself) Spring Config (https://cloud.spring.io/spring-cloud-config/) wich is part of Spring Cloud (http://projects.spring.io/spring-cloud/)
+- Netflix Eureka integration for service discovery (https://github.com/Netflix/eureka)
+- Twitter Zipkin   for distributed tracing (http://zipkin.io/)
 
 ## References 
 
+- https://12factor.net/
+
 - https://start.spring.io/
+
+- https://github.com/spring-projects/spring-boot
 
 - https://www.youtube.com/watch?v=rqQOSG0DWPY
 
@@ -26,4 +31,25 @@ But also a whole bunch of great tehcnologiy from SpringCloud and Netflix microse
 SpringCloud config uses a REAL git repository (wether it is local or remote).
 
 For this project repo is https://github.com/vincedgy/reservplat-config.git
+
+more here : https://cloud.spring.io/spring-cloud-config/spring-cloud-config.html
+
+!! Look at Vault integration wich brings crypto capabilities for secret content
+
+## Spring Boot CLI
+
+https://github.com/spring-cloud/spring-cloud-cli
+
+Unzip package of Spring CLI from here
+http://repo.spring.io/release/org/springframework/boot/spring-boot-cli/1.5.3.RELEASE/spring-boot-cli-1.5.3.RELEASE-bin.zip
+
+Then install 'cloud' library :
+note : checkout the last release here https://github.com/spring-cloud/spring-cloud-cli/releases
+
+```
+$ spring install org.springframework.cloud:spring-cloud-cli:1.3.3.RELEASE
+```
+
+
+
 
