@@ -1,4 +1,4 @@
 # This is the url of the configuration server
-spring.cloud.config.uri=http://localhost:8888
+spring.cloud.config.uri: http://localhost:8888
 # And this is the name of this application so it can get its configuration from the server
-spring.application.name=eureka-service
+spring.application.name: eureka-service
