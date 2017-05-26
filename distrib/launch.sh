@@ -6,6 +6,8 @@ config-service \
 eureka-service \
 zipkin-service \
 hystrix-dashboard \
+spring-boot-admin \
+turbine-dashboard \
 reservation-service \
 reservation-client"
 

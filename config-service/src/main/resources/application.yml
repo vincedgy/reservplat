@@ -1,0 +1,4 @@
+spring.cloud.config.server.git.uri: ${HOME}/Projects/Microservices/reservplat/config
+#spring.cloud.config.server.git.uri: https://github.com/vincedgy/reservplat-config.git
+server.port: 8888
+spring.application.name: config-service

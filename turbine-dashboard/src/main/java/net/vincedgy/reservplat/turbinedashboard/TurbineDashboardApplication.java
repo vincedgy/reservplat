@@ -11,6 +11,13 @@ import org.springframework.cloud.netflix.turbine.EnableTurbine;
 public class TurbineDashboardApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(TurbineDashboardApplication.class, args);
+
+		/*
+		boolean cloudEnvironment = new StandardEnvironment().acceptsProfiles("cloud");
+		new SpringApplicationBuilder(TurbineDashboardApplication.class).web(!cloudEnvironment).run(args);
+		*/
+
 	}
 }
