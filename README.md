@@ -67,5 +67,7 @@ Use @EnableDiscoveryClient in order to change from Eureka to another solution.
 Responsible for talking to the external worl (from the microservices platform perspective).
 It's edge services that talk to final clients of the services (mobile, car, refridgerators, TV, what you want...).
 
+## Ammin with Spring Boot Admin
 
+http://codecentric.github.io/spring-boot-admin/1.5.0/
 
