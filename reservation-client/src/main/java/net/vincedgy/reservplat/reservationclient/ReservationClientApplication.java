@@ -3,10 +3,15 @@ package net.vincedgy.reservplat.reservationclient;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.actuate.health.Health;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.cloud.netflix.feign.EnableFeignClients;
+import org.springframework.cloud.netflix.feign.FeignClient;
+import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.annotation.Output;
@@ -28,17 +33,12 @@ import java.util.Collection;
 import java.util.stream.Collectors;
 
 
-interface ReservationClientChannels {
-
-    @Output
-    MessageChannel output();
-}
-
-@EnableZuulProxy
 @EnableBinding(ReservationClientChannels.class)
-@SpringBootApplication
-@EnableDiscoveryClient
 @EnableCircuitBreaker
+@RefreshScope
+@EnableDiscoveryClient
+@EnableZuulProxy
+@SpringBootApplication
 public class ReservationClientApplication {
 
     @Bean
@@ -50,8 +50,28 @@ public class ReservationClientApplication {
     public static void main(String[] args) {
         SpringApplication.run(ReservationClientApplication.class, args);
     }
+
+
+    public Health health() {
+        return Health.status("I <3  SpringBoot !!").build();
+    }
+
 }
 
+
+
+interface ReservationClientChannels {
+    @Output
+    MessageChannel output();
+}
+
+class Reservation {
+    private String reservationName;
+
+    public String getReservationName() {
+        return reservationName;
+    }
+}
 
 @RestController
 @RequestMapping("/reservations")
@@ -98,13 +118,6 @@ class ReservationApiGatewayRestController {
 
 }
 
-class Reservation {
-    private String reservationName;
-
-    public String getReservationName() {
-        return reservationName;
-    }
-}
 
 
 
