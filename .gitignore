@@ -1,1 +1,7 @@
 .DS_Store
+.jar
+.zip
+distrib/*.jar
+distrib/*.log
+pids.txt
+trace.txt
