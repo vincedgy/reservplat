@@ -11,14 +11,14 @@ turbine-dashboard \
 reservation-service \
 reservation-client"
 
-rm pids.txt
+rm pids.txt 2>/dev/null
 
 for MODULE in $SEQUENCE
 do
     JARMODULE=$(ls ./$MODULE*.jar)
     echo "Launching module $JARMODULE..."
     
-    java -jar $JARMODULE > $JARMODULE.log 2>&1 & 
+    java -Xmx80M -jar $JARMODULE > $JARMODULE.log 2>&1 & 
     
     CHILD_PID=$!
     echo $CHILD_PID >> pids.txt

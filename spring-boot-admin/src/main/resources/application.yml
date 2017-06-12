@@ -1,6 +1,6 @@
 spring:
   application:
-    name: eureka-example
+    name: spring-boot-admin
   cloud:
     config:
       enabled: false

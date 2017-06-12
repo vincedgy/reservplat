@@ -1,4 +1,4 @@
 for PID in $(cat pids.txt)
 do
-    kill $PID
+    kill $PID &
 done

@@ -1,5 +1,5 @@
 #!/bin/bash
-set -x
+
 BASEDIR=$(pwd)
 mkdir distrib
 
